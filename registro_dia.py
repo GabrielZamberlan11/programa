@@ -4,19 +4,24 @@ from tkcalendar import Calendar
 import subprocess
 import sqlite3
 
+
+
+
 conexao= sqlite3.connect('registro_clientes.db')
 cursor=conexao.cursor()
 
 cursor.execute('''
-    CREATE TABLE IF NOT EXISTS eventos (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        serviço TEXT NOT NULL
-        data TEXT NOT NULL
-        horario TEXT NOT NULL
-    )
-''')
+CREATE TABLE IF NOT EXISTS agendamento ( 
+    id INTEGER PRIMARY KEY AUTOINCREMENT, 
+    id_cliente INTEGER, 
+    serviço TEXT NOT NULL, 
+    data TEXT NOT NULL, 
+    horario TEXT NOT NULL 
+) 
+''') 
 
-conexao.commit()
+conexao.commit() 
+
 
 ctk.set_appearance_mode("white")
 ctk.set_default_color_theme("blue")
@@ -27,10 +32,8 @@ jan.configure(fg_color="#DEB887")
 
 def ok():
     data=calendario.get_date()
-    if nome.strip and emailok.strip():
-        cursor.execute('INSERT INTO usuarios (data,) VALUES (?)', (data,))
-        conexao.commit()
-        print(f"Data {data} salvo com sucesso")
+    with open("data.txt","w") as f:
+        f.write(data)
 
     subprocess.Popen(["python","registro_serviço.py"])
     jan.iconify()
@@ -49,3 +52,5 @@ confirm.pack(pady=15)
 
 
 jan.mainloop()
+
+conexao.close()

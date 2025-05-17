@@ -26,7 +26,7 @@ def mudar ():
     if nome.strip and emailok.strip():
         cursor.execute('INSERT INTO usuarios (nome,email) VALUES (?,?)', (nome,emailok))
         conexao.commit()
-        print(f"Nome {nome} e Email {email} salvo com sucesso")
+        print(f"Nome e Email salvo com sucesso")
 
     subprocess.Popen(["python","registro_dia.py"])
     jan.iconify()
