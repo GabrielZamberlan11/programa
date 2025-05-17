@@ -6,12 +6,14 @@ conexao= sqlite3.connect('registro_clientes.db')
 cursor=conexao.cursor()
 
 cursor.execute('''
-CREATE TABLE IF NOT EXISTS usuarios(
+CREATE TABLE IF NOT EXISTS clientes(
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nome TEXT NOT NULL,
     email TEXT NOT NULL
 )
 ''')
+
+
 
 ctk.set_appearance_mode("white")
 ctk.set_default_color_theme("blue")
@@ -24,9 +26,14 @@ def mudar ():
     nome=nom.get()
     emailok=email.get()
     if nome.strip and emailok.strip():
-        cursor.execute('INSERT INTO usuarios (nome,email) VALUES (?,?)', (nome,emailok))
+        cursor.execute('INSERT INTO clientes (nome,email) VALUES (?,?)', (nome,emailok))
         conexao.commit()
+        id_gerado=cursor.lastrowid
         print(f"Nome e Email salvo com sucesso")
+
+
+    with open("cliente_registrado.txt","w") as f:
+        f.write(str(id_gerado))
 
     subprocess.Popen(["python","registro_dia.py"])
     jan.iconify()

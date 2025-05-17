@@ -1,20 +1,16 @@
 import customtkinter as ctk
 import sqlite3
-
+import subprocess
 
 
 conexao= sqlite3.connect('registro_clientes.db') 
 cursor=conexao.cursor() 
 
 with open("data.txt","r") as f:
-        data=f.read().strip()
+     data=f.read().strip()
 
-cursor.execute("SELECT * FROM  usuarios ORDER BY id DESC LIMIT 1") 
-resultado=cursor.fetchone()
-if resultado:
-     id_cliente=resultado[0]
-else:
-     id_cliente=None
+with open("cliente_registrado.txt","r") as f:
+     id_cliente=f.read().strip()
 
 def salvar(): 
     hora=escolhahora.get() 
@@ -26,7 +22,10 @@ def salvar():
         print(f"Serviço, Data e Hora salvo com sucesso") 
 
 
-
+def voltar():
+     subprocess.Popen(["python","main_page.py"])
+     jan.iconify()
+     jan.destroy()
 
 ctk.set_appearance_mode("white")
 ctk.set_default_color_theme("blue")
@@ -50,7 +49,8 @@ escolhahora.pack(pady=20,anchor="w")
 butao=ctk.CTkButton(jan,text="confirmar",font=("Arial",20),fg_color="#006400",command=salvar)
 butao.pack(pady=25)
 
-
+voltei=ctk.CTkButton(jan,text="Voltar para tela inicial",font=("Arial",25),command=voltar,fg_color="#B8860B")
+voltei.pack(pady=25,anchor="w",padx=15)
 
 jan.mainloop()
 
