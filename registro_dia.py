@@ -3,7 +3,7 @@ import tkinter as tk
 from tkcalendar import Calendar
 import subprocess
 import sqlite3
-
+from PIL import Image
 
 
 
@@ -40,7 +40,6 @@ def ok():
     jan.destroy()
 
 
-
 calendario= Calendar(jan,date_pattern='dd/mm/yy',font=("Arial",15)) 
 calendario.pack(pady=20)
 
@@ -48,7 +47,11 @@ confirm= ctk.CTkButton(jan,text="confirmar",font=("Arial",20),fg_color="#006400"
 confirm.pack(pady=15)
 
 
+image_pil= Image.open("Divina Pele.jpg") 
+image_ctk=ctk.CTkImage(light_image=image_pil, dark_image=image_pil, size=(175, 175)) 
 
+label_imagem=ctk.CTkLabel(jan,image=image_ctk,text="" ) 
+label_imagem.pack(pady=5) 
 
 
 jan.mainloop()

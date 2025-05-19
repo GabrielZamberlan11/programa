@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import subprocess
 import sqlite3
+from PIL import Image
 
 #banco de dados
 
@@ -103,7 +104,11 @@ tabela.place(x=250,y=330)
 confirmação=ctk.CTkLabel(jan,text="")
 confirmação.pack()
 
+image_pil= Image.open("Divina Pele.jpg") 
+image_ctk=ctk.CTkImage(light_image=image_pil, dark_image=image_pil, size=(160, 160)) 
 
+label_imagem=ctk.CTkLabel(jan,image=image_ctk,text="" ) 
+label_imagem.place(x=300,y=-20)
 
 
 

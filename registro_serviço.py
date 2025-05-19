@@ -1,7 +1,7 @@
 import customtkinter as ctk
 import sqlite3
 import subprocess
-
+from PIL import Image
 
 conexao= sqlite3.connect('registro_clientes.db') 
 cursor=conexao.cursor() 
@@ -51,6 +51,16 @@ butao.pack(pady=25)
 
 voltei=ctk.CTkButton(jan,text="Voltar para tela inicial",font=("Arial",25),command=voltar,fg_color="#B8860B")
 voltei.pack(pady=25,anchor="w",padx=15)
+
+
+image_pil= Image.open("Divina Pele.jpg") 
+image_ctk=ctk.CTkImage(light_image=image_pil, dark_image=image_pil, size=(175, 175)) 
+
+label_imagem=ctk.CTkLabel(jan,image=image_ctk,text="" ) 
+label_imagem.pack(pady=5) 
+
+
+
 
 jan.mainloop()
 

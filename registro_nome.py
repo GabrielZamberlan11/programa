@@ -1,6 +1,7 @@
 import customtkinter as ctk
 import subprocess
 import sqlite3
+from PIL import Image
 
 conexao= sqlite3.connect('registro_clientes.db')
 cursor=conexao.cursor()
@@ -55,7 +56,11 @@ email.pack(padx=10,anchor="w",pady=1)
 confirm=ctk.CTkButton(jan,text="confirmar", font=("Arial",30),width=200,height=65,fg_color="#006400",command=mudar)
 confirm.pack(pady=40)
 
+image_pil= Image.open("Divina Pele.jpg") 
+image_ctk=ctk.CTkImage(light_image=image_pil, dark_image=image_pil, size=(175, 175)) 
 
+label_imagem=ctk.CTkLabel(jan,image=image_ctk,text="" ) 
+label_imagem.pack(pady=5) 
 
 
 
