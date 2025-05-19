@@ -104,6 +104,7 @@ tabela.place(x=250,y=330)
 confirmação=ctk.CTkLabel(jan,text="")
 confirmação.pack()
 
+#imagem
 image_pil= Image.open("Divina Pele.jpg") 
 image_ctk=ctk.CTkImage(light_image=image_pil, dark_image=image_pil, size=(160, 160)) 
 
