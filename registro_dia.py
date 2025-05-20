@@ -27,7 +27,7 @@ ctk.set_appearance_mode("white")
 ctk.set_default_color_theme("blue")
 jan = ctk.CTk()
 jan.geometry("450x450")
-jan.title()
+jan.title("DIvina Pele")
 jan.configure(fg_color="#DEB887")
 
 def ok():

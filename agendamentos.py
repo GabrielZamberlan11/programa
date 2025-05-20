@@ -39,7 +39,7 @@ ctk.set_appearance_mode("white")
 ctk.set_default_color_theme("blue")
 jan = ctk.CTk()
 jan.geometry("600x550")
-jan.title()
+jan.title("Divina Pele")
 jan.configure(fg_color="#DEB887")
 
 label=ctk.CTkLabel(jan,text="Tabela de agendamentos:",font=("Arial",30))

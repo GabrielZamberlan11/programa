@@ -31,7 +31,7 @@ ctk.set_appearance_mode("white")
 ctk.set_default_color_theme("blue")
 jan = ctk.CTk()
 jan.geometry("400x450")
-jan.title()
+jan.title("Divina Pele")
 jan.configure(fg_color="#DEB887")
 
 serviços=["Máscaras faciais", "Penteados", "Maquiagens","Tratamento de rejuvenescimento", "Aromaterapia", "Massagens", "Limpeza de Pele"]
